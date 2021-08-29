@@ -1,16 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import NavBar from './components/NavBar'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Andi es el mejor</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Andi es el mejor</h1>
-      </header>
+    <div className="App bg-dark">
+      <NavBar/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
