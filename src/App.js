@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <NavBar/>
-      <ItemListContainer nombre="Andres" logueado={false} />
+      <ItemListContainer nombre="Andres" />
     </div>
   )
 }
