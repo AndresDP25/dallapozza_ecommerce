@@ -1,12 +1,12 @@
 import logo from '../img/logo.jpg';
 import './NavBar.css';
-import  { FaShoppingCart } from "react-icons/fa";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import CartWidget from './CartWidget';
 
 
 
@@ -32,7 +32,7 @@ function NavBar() {
                         />
                         <Button variant="outline-success">Search</Button>
                         </Form>
-                        <FaShoppingCart size="2em" color="cornflowerblue" className="m-3" />
+                        <CartWidget />
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
