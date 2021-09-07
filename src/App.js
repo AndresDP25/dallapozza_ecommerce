@@ -8,10 +8,15 @@ import {ItemListContainer} from './components/ItemListContainer'
 
 
 function App() {
+
+  const nombre ="Andres"
+  const appelido ="Dalla Pozza"
+  const saludo = "Hola como andas"
+
   return (
     <div>
       <NavBar/>
-      <ItemListContainer nombre="Andres" />
+      <ItemListContainer saludos={saludo} nombre={nombre} apellido={appelido} />
     </div>
   )
 }

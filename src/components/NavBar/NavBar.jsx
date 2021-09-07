@@ -7,10 +7,16 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import CartWidget from './CartWidget';
+import { useState } from 'react';
 
 
 
 function NavBar() {
+
+    const [carrito, setCarrito] = useState(0)
+
+    
+
     return (
         <div>
             <Navbar bg="dark" variant="dark" expand="lg">
@@ -33,6 +39,7 @@ function NavBar() {
                         <Button variant="outline-success">Search</Button>
                         </Form>
                         <CartWidget />
+                        <div className="text-white-50 ms-3">{carrito}</div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

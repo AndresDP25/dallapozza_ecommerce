@@ -1,10 +1,17 @@
+import ItemCount from "./ItemCount";
 
-export function ItemListContainer(props) {
+export function ItemListContainer({saludos,nombre, apellido}) {
+
+    
 
     return (
-        <div className="container d-flex align-items-center justify-content-center mt-5 bg-dark text-white-50">
-            <h3 className="p-3">Hola cómo andas {props.nombre}?</h3>
+        <div className="container mt-5 bg-dark text-white-50 text-center">
+            <h3 className="p-3">{saludos} {nombre} {apellido}?</h3>
+
+            <ItemCount/>
         </div>
+
+        
     )
 }
 
