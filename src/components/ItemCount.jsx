@@ -3,21 +3,23 @@ import { FaWindowMinimize } from "react-icons/fa";
 import { useState } from 'react';
 
 
-const ItemCount = () => {
+const ItemCount = ({stock, initial, onAdd}) => {
 
-    const [stock, setStock] = useState(5)
+    const [count, setCount] = useState(initial)
 
-    const sumarStock = () => {
-        stock < 5 ? setStock(stock + 1) : setStock(5)
+    const sumar = () => {
+        count < stock ? setCount(count + 1) : setCount(5)
     }
 
-    const restarStock = () => {
-        stock > 0 ? setStock(stock - 1) : setStock(0)
+    const restar = () => {
+        count > initial ? setCount(count - 1) : setCount(0)
     }
 
-    const mostrarStock = () => {
-        console.log(stock)
+    const agregarCarrito = () => {
+        onAdd(count)
     }
+
+    
 
 
     return ( 
@@ -30,17 +32,17 @@ const ItemCount = () => {
                     </div>
                     <div className="row">
                         <div className="col-4">
-                            <button className="btn btn-success" onClick={sumarStock}><FaPlus /></button>
+                            <button className="btn btn-success" onClick={sumar}><FaPlus /></button>
                         </div>
                         <div className="col-4">
-                            Stock { stock }
+                            Stock { count }
                         </div>
                         <div className="col-4">
-                            <button className="btn btn-danger" onClick={restarStock}><FaWindowMinimize/></button>   
+                            <button className="btn btn-danger" onClick={restar}><FaWindowMinimize/></button>   
                         </div>
                     </div>
                     <div className="row m-3">
-                        <button className="btn btn-primary" onClick={mostrarStock} >Agregar al carrito</button>
+                        <button className="btn btn-primary" onClick={agregarCarrito}>Agregar al carrito</button>
                     </div>
                 </div>
                 <div className="col-3"></div>

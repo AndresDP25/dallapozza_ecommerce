@@ -19,7 +19,7 @@ function NavBar() {
 
     return (
         <div>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg="dark" variant="dark" expand="md">
                 <Container>
                     <img src= { logo } alt="logo" className="img_logo img-thumbnail rounded-circle m-2" style={{ width: '80px' }} />
                     <Navbar.Brand href="#home">Mercado Loco</Navbar.Brand>
