@@ -22,12 +22,12 @@ function NavBar() {
             <Navbar bg="dark" variant="dark" expand="md">
                 <Container>
                     <img src= { logo } alt="logo" className="img_logo img-thumbnail rounded-circle m-2" style={{ width: '80px' }} />
-                    <Navbar.Brand href="#home">Mercado Loco</Navbar.Brand>
+                    <Navbar.Brand href="#home" className="text-danger">CrAzYBuRgEr</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Link</Nav.Link>
+                            <Nav.Link href="#link">Nosotros</Nav.Link>
                         </Nav>
                         <Form className="d-flex">
                         <FormControl
@@ -36,7 +36,7 @@ function NavBar() {
                             className="mr-2 me-2"
                             aria-label="Search"
                         />
-                        <Button variant="outline-success">Search</Button>
+                        <Button variant="outline-danger">Search</Button>
                         </Form>
                         <CartWidget />
                         <div className="text-white-50 ms-3">{carrito}</div>

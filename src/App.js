@@ -1,22 +1,17 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar/NavBar';
-import {ItemListContainer} from './components/ItemListContainer'
-
-
-
+import ItemListContainer from './components/containers/ItemListContainer'
 
 
 function App() {
 
-  const nombre ="Andres"
-  const appelido ="Dalla Pozza"
-  const saludo = "Hola como andas"
+  const prod = "BURGERS"
 
   return (
-    <div>
+    <div className="bg-warning vh-100">
       <NavBar/>
-      <ItemListContainer saludos={saludo} nombre={nombre} apellido={appelido} />
+      <ItemListContainer prod={prod} />
     </div>
   )
 }
