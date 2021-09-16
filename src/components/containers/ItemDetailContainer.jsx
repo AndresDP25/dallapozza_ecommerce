@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { getFecthUno } from '../../utils/Mock';
+import { getFetchUno } from '../../utils/Mock';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 
@@ -8,14 +8,14 @@ const ItemDetailContainer = () => {
     const [item, setItem] = useState({})
 
     useEffect(() => {
-        getFecthUno
+        getFetchUno
         .then(resp => setItem(resp))
     }, [])
 
     return ( 
-        <>
-            <ItemDetail Item={Item} />
-        </>
+        <div className="container mt-5 text-danger text-center">
+            <ItemDetail item={item} />
+        </div>
      );
 }
  

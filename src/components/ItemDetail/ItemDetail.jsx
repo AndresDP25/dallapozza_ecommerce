@@ -1,16 +1,26 @@
-
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 
 const ItemDetail = ({item}) => {
     return ( 
         <>
-            <h2>{item.id}</h2>
-            <h2>{item.name}</h2>
-            <h2>{item.description}</h2>
-            <h2>{item.img}</h2>
-            <h2>{item.stock}</h2>
+            <div className="d-flex justify-content-center p-3">
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img className="w-200px" variant="top" src={item.img} alt='foto' />
+                    <Card.Body>
+                        <Card.Title>{item.name}</Card.Title>
+                        <Card.Text>
+                        {item.description}
+                        </Card.Text>
+                        <Button variant="primary">Detalle</Button>
+                    </Card.Body>
+                </Card>
+            </div>
         </>
      );
 }
  
 export default ItemDetail;
+
+

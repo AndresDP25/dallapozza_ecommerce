@@ -14,6 +14,7 @@ const ItemListContainer = ({prod}) => {
         console.log(cant)
     }
 
+    //Lamamos a la promesa, cuando termina mostramos los productos
     useEffect(() => {
         getFetch
         .then(respuesta =>{

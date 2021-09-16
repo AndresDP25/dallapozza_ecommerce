@@ -21,13 +21,16 @@ function NavBar() {
         <div>
             <Navbar bg="dark" variant="dark" expand="md">
                 <Container>
+                
                     <img src= { logo } alt="logo" className="img_logo img-thumbnail rounded-circle m-2" style={{ width: '80px' }} />
-                    <Navbar.Brand href="#home" className="text-danger">CrAzYBuRgEr</Navbar.Brand>
+                
+                    <Navbar.Brand href="#home" className="text-danger ms-2">CrAzYBuRgEr</Navbar.Brand>
+                
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Nosotros</Nav.Link>
+                            <Nav.Link href="#home">Nosotros</Nav.Link>
+                            <Nav.Link href="#link">Normales</Nav.Link>
                         </Nav>
                         <Form className="d-flex">
                         <FormControl
