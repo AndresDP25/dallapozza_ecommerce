@@ -1,5 +1,5 @@
-
-
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Cart from './components/Cart/Cart'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar/NavBar';
@@ -12,17 +12,21 @@ function App() {
   const prod = "BURGERS"
 
   return (
-    
-      <div className="bg-warning">
+      <BrowserRouter>
+        <div className="bg-warning">
 
-        <NavBar/>
-           
-        <ItemListContainer prod={prod} />
-             
-        <ItemDetailContainer />
-
-      </div>
-    
+          <NavBar/>
+          <Switch> 
+            <Route exact path='/' >
+              <ItemListContainer prod={prod} />
+            </Route>   
+            <Route exact path='/categoria/:idCategoria' component={ItemListContainer} />
+            <Route exact path='/detalle/:id' component={ItemDetailContainer} />
+            <Route exact path='/cart' component={Cart} />
+            
+          </Switch> 
+        </div>
+      </BrowserRouter>
   )
 }
 

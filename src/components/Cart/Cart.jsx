@@ -3,7 +3,7 @@
 
 const Cart = () => {
     return ( 
-        <div> 
+        <div className="text-center"> 
             <h3>Hola soy Cart</h3>
         </div>
      );
