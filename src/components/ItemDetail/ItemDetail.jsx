@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 // import Button from 'react-bootstrap/Button';
@@ -6,8 +6,11 @@ import ItemCount from '../ItemCount';
 
 
 const ItemDetail = ({item}) => {
+    const [cantidadSeleccionada, setCantidadSeleccionada] = useState(0)
+
     const onAdd = (cant) => {
-        // console.log(cant)
+        console.log(cant)
+        setCantidadSeleccionada(cant)
     }
     // console.log(item)
     return ( 

@@ -69,26 +69,26 @@ export const getFetch = new Promise((resolve) => {
     }, 2000)
 })
 
-const producto = {
-                    id: 1,
-                    category: 'nomarl',
-                    name: "PALERMO",
-                    description: "Doble chedar con bacon",
-                    img: img_01,
-                    stock: 5
-                }
+// const producto = {
+//                     id: 1,
+//                     category: 'nomarl',
+//                     name: "PALERMO",
+//                     description: "Doble chedar con bacon",
+//                     img: img_01,
+//                     stock: 5
+//                 }
 
-const product = productos.filter((item) => item.id === 5);
-
-
+// const product = productos.filter((item) => item.id === 5);
 
 
-export const getFetchUno = new Promise((resolve) => {
 
-    setTimeout(() => {
-        resolve(product)
-    }, 2000)
-})
+
+// export const getFetchUno = new Promise((resolve) => {
+
+//     setTimeout(() => {
+//         resolve(product)
+//     }, 2000)
+// })
 
 
 
