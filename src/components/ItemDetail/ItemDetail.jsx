@@ -7,11 +7,17 @@ import ItemCount from '../ItemCount';
 
 const ItemDetail = ({item}) => {
     const [cantidadSeleccionada, setCantidadSeleccionada] = useState(0)
+    const [cambiarBoton, setCambiarBoton] = useState(true)
 
     const onAdd = (cant) => {
         console.log(cant)
         setCantidadSeleccionada(cant)
     }
+
+    const handleInter = () => {
+        setCambiarBoton(false)
+    }
+
     // console.log(item)
     return ( 
         <>
@@ -23,12 +29,19 @@ const ItemDetail = ({item}) => {
                         <Card.Text>
                         {item.description}
                         </Card.Text>
-                        <ItemCount stock={5} initial={1} onAdd={onAdd}/>
-                        {/* <Button variant="primary">COMPRAR</Button> */}
+                        { cambiarBoton ?
+                        <ItemCount stock={5} initial={1} onAdd={onAdd} handleInter={handleInter} />
+                        :
+                        <div>
+                            <Link to={'/cart'}>
+                                <button className="btn btn-primary">Terminar Compra</button>
+                            </Link>
+                        </div>
+                        }
                     </Card.Body>
                 </Card>   
             </div>
-            <Link className="text-decoration-none btn btn-danger" to={`/`} >Volver a categorias</Link>
+            <Link className="text-decoration-none btn btn-danger" to={`/`} >Seguir comprando</Link>
         </>
      );
 }
