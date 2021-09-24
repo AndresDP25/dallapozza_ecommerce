@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/containers/ItemListContainer'
 import ItemDetailContainer from './components/containers/ItemDetailContainer'
+import CartContextProvider from './context/cartContext'
+
 
 
 function App() {
@@ -12,21 +14,23 @@ function App() {
   const prod = "BURGERS"
 
   return (
-      <BrowserRouter>
-        <div className="bg-warning">
-
-          <NavBar/>
-          <Switch> 
-            <Route exact path='/' >
-              <ItemListContainer prod={prod} />
-            </Route>   
-            <Route exact path='/categoria/:idCategoria' component={ItemListContainer} />
-            <Route exact path='/detalle/:id' component={ItemDetailContainer} />
-            <Route exact path='/cart' component={Cart} />
-            
-          </Switch> 
-        </div>
-      </BrowserRouter>
+      <CartContextProvider>
+        <BrowserRouter>
+          <div className="bg-warning">
+            <NavBar/>
+            <Switch> 
+              {/* <Route exact path='/' >
+                <ItemListContainer prod={prod} />
+              </Route>   
+              <Route exact path='/categoria/:idCategoria' component={ItemListContainer} />
+              <Route exact path='/detalle/:id' component={ItemDetailContainer} />
+              <Route exact path='/cart' component={Cart} /> */}
+              
+            </Switch> 
+          </div>
+        </BrowserRouter>
+      </CartContextProvider>
+      
   )
 }
 

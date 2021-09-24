@@ -13,8 +13,6 @@ const ItemDetailContainer = () => {
         getFetch
         .then((resp) => {
             if(id){
-                // console.log(id)
-                // console.log(typeof(id))
                 const itemFiltrado = resp.filter((item) => item.id === parseInt(id))
                 setItem(itemFiltrado)
                 .catch(error => console.log(error))

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 // import Button from 'react-bootstrap/Button';
 import ItemCount from '../ItemCount';
+import { useCartContext } from '../../context/cartContext';
 
 
 const ItemDetail = ({item}) => {
@@ -12,11 +13,14 @@ const ItemDetail = ({item}) => {
     const onAdd = (cant) => {
         console.log(cant)
         setCantidadSeleccionada(cant)
+        addToCart({item: item, cantidad: cant})
     }
 
     const handleInter = () => {
         setCambiarBoton(false)
     }
+
+    const {addToCart} = useCartContext()
 
     // console.log(item)
     return ( 
