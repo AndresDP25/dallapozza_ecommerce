@@ -11,7 +11,7 @@ const productos = [ {
                     name: "PALERMO",
                     description: "Doble chedar con bacon",
                     img: img_01,
-                    precio:"750",
+                    price:"750",
                     stock: 5
                 },
                 {
@@ -20,7 +20,7 @@ const productos = [ {
                     name: "HOLLYWOOD",
                     description: "Con tomate y cebolla morada",
                     img: img_02,
-                    precio:"750",
+                    price:"750",
                     stock: 3
                 },
                 {
@@ -29,7 +29,7 @@ const productos = [ {
                     name: "FIORITO",
                     description: "Con wisky y mucho picante",
                     img: img_03,
-                    precio:"750",
+                    price:"750",
                     stock: 6
                 },
                 {
@@ -38,7 +38,7 @@ const productos = [ {
                     name: "URQUIZA",
                     description: "Con bacon y muzzarelita rebozada",
                     img: img_04,
-                    precio:"750",
+                    price:"750",
                     stock: 5
                 },
                 {
@@ -47,7 +47,7 @@ const productos = [ {
                     name: "PACHECO",
                     description: "Con bacon y huevo frito",
                     img: img_05,
-                    precio:"750",
+                    price:"750",
                     stock: 3
                 },
                 {
@@ -56,7 +56,7 @@ const productos = [ {
                     name: "BELGRANO",
                     description: "Mucho cheddar y virviri",
                     img: img_06,
-                    precio:"750",
+                    price:"750",
                     stock: 6
                 }
                  ];

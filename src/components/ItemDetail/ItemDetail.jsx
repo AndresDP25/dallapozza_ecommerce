@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-// import Button from 'react-bootstrap/Button';
 import ItemCount from '../ItemCount';
 import { useCartContext } from '../../context/cartContext';
 
@@ -9,18 +8,13 @@ import { useCartContext } from '../../context/cartContext';
 const ItemDetail = ({item}) => {
     const [cantidadSeleccionada, setCantidadSeleccionada] = useState(0)
     const [cambiarBoton, setCambiarBoton] = useState(true)
+    const { addToCart } = useCartContext();
 
     const onAdd = (cant) => {
-        console.log(cant)
+        setCambiarBoton(false);
         setCantidadSeleccionada(cant)
-        addToCart({item: item, cantidad: cant})
+        addToCart(item, cant)
     }
-
-    const handleInter = () => {
-        setCambiarBoton(false)
-    }
-
-    const {addToCart} = useCartContext()
 
     // console.log(item)
     return ( 
@@ -33,8 +27,12 @@ const ItemDetail = ({item}) => {
                         <Card.Text>
                         {item.description}
                         </Card.Text>
+                        <Card.Text className="text-black">
+                            
+                            $ {item.price}
+                        </Card.Text>
                         { cambiarBoton ?
-                        <ItemCount stock={5} initial={1} onAdd={onAdd} handleInter={handleInter} />
+                        <ItemCount stock={5} initial={1} onAdd={onAdd} />
                         :
                         <div>
                             <Link to={'/cart'}>

@@ -19,12 +19,12 @@ function App() {
           <div className="bg-warning">
             <NavBar/>
             <Switch> 
-              {/* <Route exact path='/' >
+              <Route exact path='/' >
                 <ItemListContainer prod={prod} />
               </Route>   
               <Route exact path='/categoria/:idCategoria' component={ItemListContainer} />
               <Route exact path='/detalle/:id' component={ItemDetailContainer} />
-              <Route exact path='/cart' component={Cart} /> */}
+              <Route exact path='/cart' component={Cart} />
               
             </Switch> 
           </div>

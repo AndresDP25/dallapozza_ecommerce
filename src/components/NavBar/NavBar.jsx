@@ -8,30 +8,30 @@ import Button from 'react-bootstrap/Button';
 import CartWidget from './CartWidget';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../context/cartContext';
 
 
 
 function NavBar() {
 
-    const [carrito, setCarrito] = useState(0)
-
+    const {iconCart} = useCartContext()
     
 
     return (
         <div>
             <Navbar bg="dark" variant="dark" expand="md">
                 <Container>
-                <Link className="text-decoration-none" exact to='/' >
+                <Link className="text-decoration-none" to='/' >
                     <img src= { logo } alt="logo" className="img_logo img-thumbnail rounded-circle m-2" style={{ width: '80px' }} />
                     <Navbar.Brand className="text-danger ms-2">CrAzYBuRgEr</Navbar.Brand>
                 </Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Link className="text-decoration-none" exact to='/categoria/adultos' >
+                            <Link className="text-decoration-none"  to='/categoria/adultos' >
                                 <Nav>Adultos</Nav>
                             </Link>
-                            <Link className="text-decoration-none" exact to={`/categoria/jovenes`} >
+                            <Link className="text-decoration-none" to={`/categoria/jovenes`} >
                                 <Nav className="ms-3">Jovenes</Nav>
                             </Link>  
                         </Nav>
@@ -44,10 +44,11 @@ function NavBar() {
                         />
                         <Button variant="outline-danger">Search</Button>
                         </Form>
-                        <Link exact to='/cart'>
+                        <Link to='/cart'>
                             <CartWidget />
+                            
                         </Link>
-                        <div className="text-white-50 ms-3">{carrito}</div>
+                        <div className="text-white-50 ms-3">{iconCart()}</div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

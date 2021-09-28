@@ -16,7 +16,10 @@ const Item = ({producto}) => {
                     <Card.Text>
                     {producto.description}
                     </Card.Text>
-                    <Link exact to={`/detalle/${producto.id}`}>
+                    <Card.Text>
+                    $ {producto.price}
+                    </Card.Text>
+                    <Link to={`/detalle/${producto.id}`}>
                         <Button variant="primary">Detalle</Button>
                     </Link>
                 </Card.Body>
