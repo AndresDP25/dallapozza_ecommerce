@@ -16,7 +16,6 @@ const ItemDetail = ({item}) => {
         addToCart(item, cant)
     }
 
-    // console.log(item)
     return ( 
         <>
             <div className="d-flex justify-content-center p-3">
@@ -28,7 +27,6 @@ const ItemDetail = ({item}) => {
                         {item.description}
                         </Card.Text>
                         <Card.Text className="text-black">
-                            
                             $ {item.price}
                         </Card.Text>
                         { cambiarBoton ?

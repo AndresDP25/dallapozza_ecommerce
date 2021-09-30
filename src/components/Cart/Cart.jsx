@@ -1,12 +1,11 @@
 import { useCartContext } from "../../context/cartContext";
-import { Card, Button } from "react-bootstrap";
-import { MdDeleteForever } from "react-icons/md";
 import { Link } from "react-router-dom";
+
 
 const Cart = () => {
 
 
-  const { cartList, deleteFromCart, vaciarCarrito } = useCartContext();
+  const { cartList, deleteFromCart, vaciarCarrito, precioProductos, precioTotal } = useCartContext();
 
   return (
     <div className="container m-5">
@@ -17,18 +16,23 @@ const Cart = () => {
           {cartList.map(item => ( 
             <div key={item.item.id} className="container">
               <div className="d-flex flex-row justify-content-between m-1 mb-2">
-                  <img src={item.item.img} alt={item.item.name} style={{ width: "10rem" }} />
-                  <h3>{item.item.name}</h3>
-                  <h3>$ <span>{item.item.price}</span></h3>
+                  <div className="d-flex">
+                    <img src={item.item.img} alt={item.item.name} style={{ width: "10rem" }} />
+                    <h4 className="ms-4">{item.item.name}</h4>
+                  </div>
+                  <h3><span className="me-2">{item.quantity}</span>unidades</h3>
+                  <h3>$<span>{item.item.price}</span></h3>
+                  <h3>$ <span>{item.quantity*item.item.price}</span></h3>
                   <div><button className="btn btn-primary" onClick={()=>deleteFromCart(item)}>Eliminar</button></div>
               </div>
             </div>
           ))}
         </div>
+        <h3 className="d-flex flex-row-reverse m-3">Total $ {precioTotal()}</h3>
 
         <div className="container d-flex justify-content-between">
 
-            {/* <h3 className="border p-2 shadow m-0">Total: $ {totalPrice}</h3> */}
+            <Link className="text-decoration-none btn btn-secondary" to={`/`} >Seguir comprando</Link>
 
             <button className="btn btn-danger shadow" onClick={() => { vaciarCarrito() }}>Vaciar Carrito</button>
 

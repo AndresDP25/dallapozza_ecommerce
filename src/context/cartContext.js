@@ -20,7 +20,7 @@ export default function CartContextProvider ({children}) {
     // }
 
     function addToCart(item, quantity){
-        const index = cartList.findIndex(i => i.id === item.id)
+        const index = cartList.findIndex(i => i.item.id === item.id)
 
         if (index > -1){
             const oldCart = cartList[index].quantity
@@ -41,7 +41,7 @@ export default function CartContextProvider ({children}) {
     }
 
     const iconCart = () => {
-        return cartList.reduce ( (acum, valor) => acum + valor.quantity, 0)
+        return cartList.reduce ((acum, valor) => acum + valor.quantity, 0)
     }
 
     const precioTotal = () => {
