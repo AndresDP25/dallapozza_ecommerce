@@ -7,7 +7,6 @@ export const useCartContext = () => useContext(cartContext)
 export default function CartContextProvider ({children}) {
     const [cartList, setCartList] = useState([])
     
-
     // function addToCart(item, quantity){
     //     let previousCart = [...cartList]
 
@@ -48,7 +47,6 @@ export default function CartContextProvider ({children}) {
         return cartList.reduce((acum, valor) => (acum + (valor.quantity * valor.item.price)), 0)
     }
 
-   
     
     return ( 
         <cartContext.Provider value={{

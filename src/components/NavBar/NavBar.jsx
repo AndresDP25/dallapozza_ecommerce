@@ -21,10 +21,10 @@ function NavBar() {
         <div>
             <Navbar bg="dark" variant="dark" expand="md">
                 <Container>
-                <Link className="text-decoration-none" to='/' >
-                    <img src= { logo } alt="logo" className="img_logo img-thumbnail rounded-circle m-2" style={{ width: '80px' }} />
-                    <Navbar.Brand className="text-danger ms-2">CrAzYBuRgEr</Navbar.Brand>
-                </Link>
+                    <Link className="text-decoration-none" to='/' >
+                        <img src= { logo } alt="logo" className="img_logo img-thumbnail rounded-circle m-2" style={{ width: '80px' }} />
+                        <Navbar.Brand className="text-danger ms-2">CrAzYBuRgEr</Navbar.Brand>
+                    </Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
