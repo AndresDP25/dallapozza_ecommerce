@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getFetch } from '../../utils/Mock';
 
 import ItemList from "../ItemList/ItemList";
+import { getFirestore } from '../../services/getFirebase';
 
 
 const ItemListContainer = ({prod}) => {
@@ -10,26 +11,53 @@ const ItemListContainer = ({prod}) => {
     const [loading, setLoading] = useState(true)
     const {idCategoria} = useParams()
 
-    //Lamamos a la promesa, cuando termina mostramos los productos
+    //Llamamos a la promesa, cuando termina mostramos los productos
     useEffect(() => {
 
-        if (idCategoria) {
-            getFetch
-            .then(respuesta =>{
-                setProductos( respuesta.filter(prod => prod.category === idCategoria))
+        if (idCategoria){
+
+            const dbquery = getFirestore()
+            dbquery.collection('items').where('category', '==', idCategoria ).get()
+            .then(resp => {
+                setProductos( resp.docs.map(prod => ( { id: prod.id, ...prod.data()})))
             })
-            .catch(error => console.log(error))
-            .finally(()=> setLoading(false))
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false))
         } else {
-            getFetch
-            .then(respuesta =>{
-                setProductos(respuesta)
+            const dbquery = getFirestore()
+            dbquery.collection('items').get()
+            .then(resp => {
+                setProductos( resp.docs.map(prod => ( { id: prod.id, ...prod.data()})))
             })
-            .catch(error => console.log(error))
-            .finally(()=> setLoading(false))
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false))
         }
 
+
+
+
+
+
+
+        // if (idCategoria) {
+        //     getFetch
+        //     .then(respuesta =>{
+        //         setProductos( respuesta.filter(prod => prod.category === idCategoria))
+        //     })
+        //     .catch(error => console.log(error))
+        //     .finally(()=> setLoading(false))
+        // } else {
+        //     getFetch
+        //     .then(respuesta =>{
+        //         setProductos(respuesta)
+        //     })
+        //     .catch(error => console.log(error))
+        //     .finally(()=> setLoading(false))
+        // }
+
     }, [idCategoria])
+
+    console.log(productos)
 
     return ( 
         <div className="container mt-5 text-danger text-center">
