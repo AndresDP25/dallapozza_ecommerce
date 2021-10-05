@@ -19,6 +19,7 @@ export default function CartContextProvider ({children}) {
     // }
 
     function addToCart(item, quantity){
+        console.log(item);
         const index = cartList.findIndex(i => i.item.id === item.id)
 
         if (index > -1){

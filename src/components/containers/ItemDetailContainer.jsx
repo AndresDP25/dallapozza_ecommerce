@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getFetch } from "../../utils/Mock";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import { getFirestore } from '../../services/getFirebase';
+
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState();
@@ -9,17 +11,25 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    getFetch
-      .then((resp) => {
-        if (id) {
-          const itemFiltrado = resp.filter((item) => item.id === parseInt(id));
-          setItem(itemFiltrado);
-        } else {
-          setItem(resp);
-        }
+    if(id){
+      
+      const dbQuery = getFirestore()
+      dbQuery.collection('items').doc(id).get()
+      .then(resp => {
+        console.log(resp)
+        setItem({id: resp.id, ...resp.data()})
       })
-      .catch((err) => console.error(err))
-      .finally(() => setLoading(false));
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
+    } else {
+      const dbQuery = getFirestore()
+      dbQuery.collection('items').doc(id).get()
+      .then(resp =>{
+        setItem({id: resp.id, ...resp.data()})
+      })
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
+    }
   }, [id]);
   // console.log(item)
   return (
@@ -28,7 +38,7 @@ const ItemDetailContainer = () => {
         {loading ? (
           <h2>Cargando...</h2>
         ) : (
-          <ItemDetail key={item[0].id} item={item[0]} />
+          <ItemDetail key={item} item={item} />
         )}
       </div>
     </>
