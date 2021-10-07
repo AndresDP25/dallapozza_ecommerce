@@ -7,10 +7,14 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 
 
+
+
 const Cart = () => {
   const [formData, setFormData] = useState(inatialState)
 
   const { cartList, deleteFromCart, vaciarCarrito, precioTotal } = useCartContext();
+
+  
 
   const handleOnSubmit = (e) => {
     e.preventDefault()
@@ -119,31 +123,34 @@ const Cart = () => {
         <div className="container">
           <form className="mb-3"
           onSubmit={handleOnSubmit}
-          onChange={handleOnChange}
           >
             <input className="me-3"
               type='text'
               placeholder='ingrese el nombre'
               name='name'
               value={formData.name}
+              onChange={handleOnChange}
             />
             <input className="me-3"
               type='text'
               placeholder='ingrese el numero de telefono'
               name='tel'
               value={formData.tel}
+              onChange={handleOnChange}
             />
             <input className="me-3"
               type='text'
               placeholder='ingrese el email'
               name='email'
               value={formData.email}
+              onChange={handleOnChange}
             />
             <input className="me-3"
               type='text'
               placeholder='confirme el email'
               name='email2'
               value={formData.email2}
+              onChange={handleOnChange}
             />
           </form>
 
@@ -172,8 +179,12 @@ export default Cart;
 const inatialState = {
   name: '',
   tel:'',
-  email:''
+  email:'',
+  email2:''
 }
+
+
+
 
 
 
