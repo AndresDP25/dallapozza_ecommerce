@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import CartWidget from './CartWidget';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/cartContext';
 
@@ -28,11 +27,11 @@ function NavBar() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Link className="text-decoration-none"  to='/categoria/adultos' >
-                                <Nav>Adultos</Nav>
+                            <Link className="text-decoration-none"  to='/categoria/Combos' >
+                                <Nav>Combos</Nav>
                             </Link>
-                            <Link className="text-decoration-none" to={`/categoria/jovenes`} >
-                                <Nav className="ms-3">Jovenes</Nav>
+                            <Link className="text-decoration-none" to={`/categoria/Otros productos`} >
+                                <Nav className="ms-3">Otros productos</Nav>
                             </Link>  
                         </Nav>
                         <Form className="d-flex">

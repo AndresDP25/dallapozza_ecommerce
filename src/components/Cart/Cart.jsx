@@ -3,20 +3,22 @@ import { useCartContext } from "../../context/cartContext";
 import { Link } from "react-router-dom";
 import { getFirestore } from '../../services/getFirebase';
 //esta importacion hay que volver a hacerla
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 
 
 
 const Cart = () => {
-  const [formData, setFormData] = useState(inatialState)
+  const [formData, setFormData] = useState(initialState)
 
   const { cartList, deleteFromCart, vaciarCarrito, precioTotal } = useCartContext();
 
   
 
   const handleOnSubmit = (e) => {
+    
+    
     e.preventDefault()
     let orden = {}; 
 
@@ -27,8 +29,9 @@ const Cart = () => {
     orden.total = precioTotal();
   
     orden.items = cartList.map(cartItem => {
+      console.log(cartList);
       const id = cartItem.item.id; 
-      const title = cartItem.item.title;
+      const title = cartItem.item.name;
       const price = cartItem.item.price * cartItem.quantity; 
   
       return {id, title, price}
@@ -36,10 +39,10 @@ const Cart = () => {
 
     const db = getFirestore()
     db.collection('orders').add(orden)
-    .then(resp => console.log(resp))
+    .then(resp => console.log(resp.id))
     .catch(err => console.log(err))
     .finally(() =>{
-    setFormData(inatialState)
+    setFormData(initialState)
     vaciarCarrito()
     })
 
@@ -66,23 +69,19 @@ const Cart = () => {
           console.log('resultado batch:',res);
         })
       })
-  
-      // console.log(orden);
   }
 
 
   const handleOnChange =(e) => {
+    
 
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     })
-
   }
   
-  console.log(formData)
-  
-  // console.log(cartList.length )
+
 
   return (
     cartList.length > 0 ?
@@ -124,42 +123,46 @@ const Cart = () => {
           <form className="mb-3"
           onSubmit={handleOnSubmit}
           >
-            <input className="me-3"
+            <input className="m-3"
               type='text'
               placeholder='ingrese el nombre'
               name='name'
               value={formData.name}
               onChange={handleOnChange}
+              defaultChecked
             />
-            <input className="me-3"
+            <input className="m-3"
               type='text'
               placeholder='ingrese el numero de telefono'
               name='tel'
               value={formData.tel}
               onChange={handleOnChange}
+              defaultChecked
             />
-            <input className="me-3"
+            <input className="m-3"
               type='text'
               placeholder='ingrese el email'
               name='email'
               value={formData.email}
               onChange={handleOnChange}
+              defaultChecked
             />
-            <input className="me-3"
+            <input className="m-3"
               type='text'
               placeholder='confirme el email'
               name='email2'
               value={formData.email2}
               onChange={handleOnChange}
+              defaultChecked
             />
+          {(formData.email === formData.email2 && formData.email !== "")  ?
+
+          <button className="btn btn-success shadow" style={{ heigth: "100%" }} type="submit">Finalizar Compra</button>
+          :
+          <button className="btn btn-danger shadow m-3" style={{ heigth: "100%" }}>Validar email</button>
+          }
           </form>
 
-          {formData.email != formData.email2 ?
-
-          
-          <button className="btn btn-danger shadow" style={{ heigth: "100%" }}>Validar email</button>
-          :
-          <button className="btn btn-success shadow" style={{ heigth: "100%" }}>Finalizar Compra</button>}
         </div>
 
       </> : 
@@ -176,7 +179,7 @@ const Cart = () => {
 export default Cart;
 
 
-const inatialState = {
+const initialState = {
   name: '',
   tel:'',
   email:'',

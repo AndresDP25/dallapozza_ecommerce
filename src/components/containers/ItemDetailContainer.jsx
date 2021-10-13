@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getFetch } from "../../utils/Mock";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { getFirestore } from '../../services/getFirebase';
 
@@ -15,8 +14,7 @@ const ItemDetailContainer = () => {
       
       const dbQuery = getFirestore()
       dbQuery.collection('items').doc(id).get()
-      .then(resp => {
-        // console.log(resp) 
+      .then(resp => { 
         setItem({id: resp.id, ...resp.data()})
       })
       .catch(err => console.log(err))

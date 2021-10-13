@@ -6,13 +6,13 @@ import { useCartContext } from '../../context/cartContext';
 
 
 const ItemDetail = ({item}) => {
-    const [cantidadSeleccionada, setCantidadSeleccionada] = useState(0)
+    // const [cantidadSeleccionada, setCantidadSeleccionada] = useState(0)
     const [cambiarBoton, setCambiarBoton] = useState(true)
     const { addToCart } = useCartContext();
 
     const onAdd = (cant) => {
         setCambiarBoton(false);
-        setCantidadSeleccionada(cant)
+        // setCantidadSeleccionada(cant)
         addToCart(item, cant)
     }
 
