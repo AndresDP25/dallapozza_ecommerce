@@ -2,7 +2,7 @@ Coderhouse -ecommerce
 
 Proyecto Final de React para coderhouse
 
-Demo:
+Demo: https://quirky-jennings-a9254b.netlify.app
 
 
 . Duración 7 semanas.
