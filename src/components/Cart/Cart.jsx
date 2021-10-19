@@ -5,16 +5,27 @@ import { getFirestore } from '../../services/getFirebase';
 //esta importacion hay que volver a hacerla
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import './Cart.css';
+import CartForm from './CartForm';
+import Swal from 'sweetalert2';
 
 
 
 
 const Cart = () => {
+
+  const initialState = {
+    name: '',
+    tel:'',
+    email:'',
+    email2:''
+  }
+  
   const [formData, setFormData] = useState(initialState)
+
 
   const { cartList, deleteFromCart, vaciarCarrito, precioTotal } = useCartContext();
 
-  
 
   const handleOnSubmit = (e) => {
     
@@ -69,6 +80,8 @@ const Cart = () => {
           console.log('resultado batch:',res);
         })
       })
+
+      Swal.fire('Tu compra fué realizada con éxito','los datos son correctos','success')
   }
 
 
@@ -80,6 +93,8 @@ const Cart = () => {
       [e.target.name]: e.target.value
     })
   }
+
+ 
   
 
 
@@ -87,90 +102,45 @@ const Cart = () => {
     cartList.length > 0 ?
 
     <>
-      <div className="container m-5">
-      <div className="d-flex">
-        <h3 className="m-3">Productos en el carrito:</h3>
-      </div>
-          <div className="text-center">
-            {cartList.map(item => ( 
-              <div key={item.item.id} className="container">
-                <div className="d-flex flex-row justify-content-between m-1 mb-2">
-                    <div className="d-flex">
-                      <img src={item.item.img} alt={item.item.name} style={{ width: "10rem" }} />
-                      <h4 className="ms-4">{item.item.name}</h4>
-                    </div>
-                    <h3><span className="me-2">{item.quantity}</span>unidades</h3>
-                    <h3>$<span>{item.item.price}</span></h3>
-                    <h3>$ <span>{item.quantity*item.item.price}</span></h3>
-                    <div><button className="btn btn-primary" onClick={()=>deleteFromCart(item)}>Eliminar</button></div>
+      <div className="container cart">
+        <div className="d-flex">
+          <h3 className="m-3">Productos en el carrito:</h3>
+        </div>
+        <div className="text-center">
+          {cartList.map(item => ( 
+            <div key={item.item.id} className="container">
+              <div className="d-flex flex-row justify-content-between m-1 mb-2">
+                <div className="d-flex">
+                  <img src={item.item.img} alt={item.item.name} style={{ width: "10rem" }} />
+                  <h4 className="ms-4">{item.item.name}</h4>
                 </div>
+                <h3><span className="me-2">{item.quantity}</span>unidades</h3>
+                <h3>$<span>{item.item.price}</span></h3>
+                <h3>$ <span>{item.quantity*item.item.price}</span></h3>
+                <div><button className="btn btn-primary" onClick={()=>deleteFromCart(item)}>Eliminar</button></div>
               </div>
-            ))}
-            
-          </div>
-          <h3 className="d-flex flex-row-reverse m-3">Total $ {precioTotal()}</h3>
+            </div>
+            ))}    
+        </div>
+        <h3 className="d-flex flex-row-reverse m-3">Total $ {precioTotal()}</h3>
 
-          <div className="container d-flex justify-content-between">
+        <div className="container d-flex justify-content-between">
 
-              <Link className="text-decoration-none btn btn-secondary" to={`/`} >Seguir comprando</Link>
+          <Link className="text-decoration-none btn btn-secondary" to={`/`} >Seguir comprando</Link>
 
-              <button className="btn btn-danger shadow" onClick={() => { vaciarCarrito() }}>Vaciar Carrito</button>
+          <button className="btn btn-danger shadow" onClick={() => { vaciarCarrito() }}>Vaciar Carrito</button>
              
-          </div>
         </div>
+      </div>
 
-        <div className="container">
-          <form className="mb-3"
-          onSubmit={handleOnSubmit}
-          >
-            <input className="m-3"
-              type='text'
-              placeholder='ingrese el nombre'
-              name='name'
-              value={formData.name}
-              onChange={handleOnChange}
-              defaultChecked
-            />
-            <input className="m-3"
-              type='text'
-              placeholder='ingrese el numero de telefono'
-              name='tel'
-              value={formData.tel}
-              onChange={handleOnChange}
-              defaultChecked
-            />
-            <input className="m-3"
-              type='text'
-              placeholder='ingrese el email'
-              name='email'
-              value={formData.email}
-              onChange={handleOnChange}
-              defaultChecked
-            />
-            <input className="m-3"
-              type='text'
-              placeholder='confirme el email'
-              name='email2'
-              value={formData.email2}
-              onChange={handleOnChange}
-              defaultChecked
-            />
-          {(formData.email === formData.email2 && formData.email !== "")  ?
+      <CartForm handleOnSubmit={handleOnSubmit} handleOnChange={handleOnChange} formData={formData}  />
 
-          <button className="btn btn-success shadow" style={{ heigth: "100%" }} type="submit">Finalizar Compra</button>
-          :
-          <button className="btn btn-danger shadow m-3" style={{ heigth: "100%" }}>Validar email</button>
-          }
-          </form>
+    </> : 
 
-        </div>
-
-      </> : 
-
-        <div>
+        <div className="container cart p-3">
           <h3 className="container d-flex justify-content-center m-5">No hay productos en tu carrito</h3>
           
-          <Link className="text-decoration-none btn btn-secondary d-flex container justify-content-center" to={`/`} >Seguir comprando</Link>
+          <Link className="text-decoration-none btn btn-secondary d-flex container justify-content-center sinProd" to={`/`} >Seguir comprando</Link>
         </div>
     
   );
@@ -179,12 +149,7 @@ const Cart = () => {
 export default Cart;
 
 
-const initialState = {
-  name: '',
-  tel:'',
-  email:'',
-  email2:''
-}
+
 
 
 

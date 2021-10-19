@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { getFirestore } from '../../services/getFirebase';
+import './ItemDetailContainer.css';
+
 
 
 const ItemDetailContainer = () => {
@@ -34,7 +36,7 @@ const ItemDetailContainer = () => {
     <>
       <div className="container mt-5 text-danger text-center">
         {loading ? (
-          <h2>Cargando...</h2>
+          <h2 className="itemDetailStyle">Cargando...</h2>
         ) : (
           <ItemDetail key={item} item={item} />
         )}

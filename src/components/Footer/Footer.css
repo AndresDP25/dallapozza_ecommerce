@@ -1,0 +1,17 @@
+.footer {
+    bottom: 0;
+    width:100%;
+    color: white;
+    padding: 50px 0;
+}
+
+.linksFooter {
+    cursor: pointer;
+    list-style: none;
+    color: #8f8c8c;
+}
+
+.footerDark { 
+    color: #8f8c8c;
+}
+

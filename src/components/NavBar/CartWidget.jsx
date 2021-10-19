@@ -4,7 +4,7 @@ function CartWidget() {
 
     return (
         <div className="d-flex">
-            <FaShoppingCart size="2em" color="white" className="m-3" />
+            <FaShoppingCart size="2.5em" color="white" className="m-3" />
         </div>
     )
 }

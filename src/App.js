@@ -6,6 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/containers/ItemListContainer'
 import ItemDetailContainer from './components/containers/ItemDetailContainer'
 import CartContextProvider from './context/cartContext'
+import Footer from './components/Footer/Footer'
 
 
 
@@ -16,7 +17,7 @@ function App() {
   return (
       <CartContextProvider>
         <BrowserRouter>
-          <div className="bg-warning">
+          <div className="app">
             <NavBar/>
             <Switch> 
               <Route exact path='/' >
@@ -26,6 +27,7 @@ function App() {
               <Route exact path='/detalle/:id' component={ItemDetailContainer} />
               <Route exact path='/cart' component={Cart} />    
             </Switch> 
+            <Footer/> 
           </div>
         </BrowserRouter>
       </CartContextProvider>
